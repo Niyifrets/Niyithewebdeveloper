@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - E-Commerce Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+            position: relative;
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            background: #ff6b6b;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(16, 196, 138, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #10c48a;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f1f3f4;
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            margin: 0 1rem;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 0.3rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #10c48a;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, #2563eb, #10c48a);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #10c48a, #2563eb);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .products {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff4444;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f1f3f4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-price {
+            color: #10c48a;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            color: #ffc107;
+        }
+
+        .rating-count {
+            color: #666;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .stock-status {
+            color: #10c48a;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .add-to-cart {
+            background: #10c48a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background: #0da876;
+        }
+
+        .view-reviews-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .view-reviews-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            overflow-y: auto;
+            z-index: 1001;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: #f1f3f4;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+        .checkout-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Review Page Styles */
+        .review-page {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-to-products {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-products:hover {
+            background: #5a6268;
+        }
+
+        .product-detail {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-detail-image {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-detail-info {
+            flex: 1;
+        }
+
+        .reviews-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .add-review-btn {
+            background: #10c48a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .add-review-btn:hover {
+            background: #0da876;
+        }
+
+        .review-form {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .review-form h3 {
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffc107;
+        }
+
+        .submit-review-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .submit-review-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .review-item {
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+        }
+
+        .review-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-text {
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #10c48a;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+
+        .recently-viewed {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .recent-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .recent-product {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .recent-product img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🛒 DEMO STORE - No real transactions will be processed
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">Demo by Niyi the Web Developer</div>
+
+    <nav class="navbar">
+        <div class="logo" onclick="showHomePage()">TechStore</div>
+        <div class="nav-links">
+            <a href="#" onclick="showHomePage()">Home</a>
+            <a href="#" onclick="showHomePage()">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <span>🔍</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="promo-banner">
+         Free Shipping on Orders Over $50 | 🔄 30-Day Return Policy
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="homePage">
+        <section class="hero">
+            <h1>Welcome to TechStore</h1>
+            <p>Your one-stop shop for the latest gadgets and tech</p>
+        </section>
+
+        <section class="products">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smartphone Pro">
+                    </div>
+                    <h3>Smartphone Pro</h3>
+                    <p>Latest smartphone with advanced features</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(128)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price">$699</div>
+                    <button class="add-to-cart" onclick="addToCart('Smartphone Pro', 699)">Add to Cart</button>
+                    <button class="view-reviews-btn" onclick="showReviews('Smartphone Pro')">View Reviews</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Laptop Elite">
+                    </div>
+                    <h3>Laptop Elite</h3>
+                    <p>Powerful laptop for work and play</p>
+                    <div class="product-rating">
+                        ★★★★★ <span class="rating-count">(64)</span>
+                    </div>
+                    <div class="stock-status">Only 3 left</div>
+                    <div class="product-price">$1299</div>
+                    <button class="add-to-cart" onclick="addToCart('Laptop Elite', 1299)">Add to Cart</button>
+                    <button class="view-reviews-btn" onclick="showReviews('Laptop Elite')">View Reviews</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Wireless Headphones">
+                    </div>
+                    <h3>Wireless Headphones</h3>
+                    <p>Premium sound quality</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(89)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price">$199</div>
+                    <button class="add-to-cart" onclick="addToCart('Wireless Headphones', 199)">Add to Cart</button>
+                    <button class="view-reviews-btn" onclick="showReviews('Wireless Headphones')">View Reviews</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Watch">
+                    </div>
+                    <h3>Smart Watch</h3>
+                    <p>Track your fitness and notifications</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(42)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price"><span style="text-decoration: line-through; color: #999; margin-right: 0.5rem;">$349</span> $299</div>
+                    <button class="add-to-cart" onclick="addToCart('Smart Watch', 299)">Add to Cart</button>
+                    <button class="view-reviews-btn" onclick="showReviews('Smart Watch')">View Reviews</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="recently-viewed">
+            <h2 class="section-title">Recently Viewed</h2>
+            <div class="recent-products">
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Tablet">
+                    <div>Tablet Pro</div>
+                    <div style="color: #10c48a; font-weight: bold;">$499</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Camera">
+                    <div>Digital Camera</div>
+                    <div style="color: #10c48a; font-weight: bold;">$599</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Gaming Console">
+                    <div>Gaming Console</div>
+                    <div style="color: #10c48a; font-weight: bold;">$399</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Keyboard">
+                    <div>Mechanical Keyboard</div>
+                    <div style="color: #10c48a; font-weight: bold;">$129</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Review Page Content -->
+    <div id="reviewPage" class="review-page">
+        <button class="back-to-products" onclick="showHomePage()">← Back to Products</button>
+        
+        <div class="product-detail">
+            <div class="product-detail-image">
+                <img id="reviewProductImage" src="" alt="">
+            </div>
+            <div class="product-detail-info">
+                <h2 id="reviewProductName"></h2>
+                <p id="reviewProductDescription"></p>
+                <div class="product-rating" id="reviewProductRating"></div>
+                <div class="stock-status" id="reviewProductStock"></div>
+                <div class="product-price" id="reviewProductPrice"></div>
+                <button class="add-to-cart" id="reviewProductAddToCart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <button class="add-review-btn" onclick="toggleReviewForm()">Add Review</button>
+            </div>
+
+            <div class="review-form" id="reviewForm">
+                <h3>Write a Review</h3>
+                <div class="form-group">
+                    <label for="reviewerName">Your Name</label>
+                    <input type="text" id="reviewerName" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating" id="starRating">
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reviewTitle">Review Title</label>
+                    <input type="text" id="reviewTitle" placeholder="Summarize your experience">
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">Your Review</label>
+                    <textarea id="reviewText" placeholder="Share your thoughts about this product"></textarea>
+                </div>
+                <button class="submit-review-btn" onclick="submitReview()">Submit Review</button>
+            </div>
+
+            <div class="reviews-list" id="reviewsList">
+                <!-- Reviews will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">All Products</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Deals & Promotions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 TechStore Demo. All rights reserved. This is a demonstration site.
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let cartCount = 0;
+        let currentProduct = null;
+        let selectedRating = 0;
+
+        // Product data with reviews
+        const products = {
+            'Smartphone Pro': {
+                image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'Latest smartphone with advanced features including 5G connectivity, AI-powered camera, and all-day battery life.',
+                price: 699,
+                stock: 'In Stock',
+                rating: '★★★★☆ (128)',
+                reviews: [
+                    { name: 'Alex Johnson', rating: 4, date: '2023-10-15', title: 'Great phone with minor issues', text: 'The camera quality is amazing and battery lasts all day. However, the fingerprint sensor could be more responsive.' },
+                    { name: 'Sarah Miller', rating: 5, date: '2023-09-22', title: 'Best phone I\'ve ever owned', text: 'Upgraded from my old phone and the difference is night and day. Super fast and the display is gorgeous.' },
+                    { name: 'Mike Chen', rating: 4, date: '2023-08-30', title: 'Solid performance', text: 'Handles everything I throw at it without lag. The only downside is it gets a bit warm during heavy gaming.' }
+                ]
+            },
+            'Laptop Elite': {
+                image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'Powerful laptop for work and play with high-performance processor, dedicated graphics, and stunning display.',
+                price: 1299,
+                stock: 'Only 3 left',
+                rating: '★★★★★ (64)',
+                reviews: [
+                    { name: 'David Wilson', rating: 5, date: '2023-11-05', title: 'Perfect for work and gaming', text: 'This laptop handles my programming work and gaming sessions without any issues. The build quality is exceptional.' },
+                    { name: 'Emily Rodriguez', rating: 5, date: '2023-10-28', title: 'Worth every penny', text: 'As a graphic designer, I need powerful hardware and this delivers. The color accuracy on the display is perfect.' }
+                ]
+            },
+            'Wireless Headphones': {
+                image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'Premium sound quality with noise cancellation, comfortable fit, and long battery life for all-day listening.',
+                price: 199,
+                stock: 'In Stock',
+                rating: '★★★★☆ (89)',
+                reviews: [
+                    { name: 'James Thompson', rating: 4, date: '2023-10-10', title: 'Excellent sound quality', text: 'The noise cancellation works great on my commute. Battery life is impressive - I only charge once a week.' },
+                    { name: 'Lisa Park', rating: 5, date: '2023-09-18', title: 'Comfortable and great sound', text: 'I wear these for hours during work calls and they never get uncomfortable. Sound quality is crystal clear.' },
+                    { name: 'Robert Brown', rating: 3, date: '2023-08-12', title: 'Good but not perfect', text: 'Sound is good but the bass could be stronger. Comfortable for long periods though.' }
+                ]
+            },
+            'Smart Watch': {
+                image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                description: 'Track your fitness and notifications with advanced health monitoring, GPS, and seamless smartphone integration.',
+                price: 299,
+                stock: 'In Stock',
+                rating: '★★★★☆ (42)',
+                reviews: [
+                    { name: 'Amanda Lee', rating: 4, date: '2023-11-12', title: 'Great fitness tracker', text: 'The step counting and heart rate monitoring seem accurate. Battery lasts about 4 days with normal use.' },
+                    { name: 'Kevin Smith', rating: 5, date: '2023-10-25', title: 'Love the notifications feature', text: 'Being able to see messages and control music from my wrist is super convenient. Looks stylish too.' }
+                ]
+            }
+        };
+
+        function showHomePage() {
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('reviewPage').style.display = 'none';
+        }
+
+        function showReviews(productName) {
+            currentProduct = productName;
+            const product = products[productName];
+            
+            // Update product details
+            document.getElementById('reviewProductImage').src = product.image;
+            document.getElementById('reviewProductName').textContent = productName;
+            document.getElementById('reviewProductDescription').textContent = product.description;
+            document.getElementById('reviewProductRating').innerHTML = product.rating;
+            document.getElementById('reviewProductStock').textContent = product.stock;
+            document.getElementById('reviewProductPrice').textContent = `$${product.price}`;
+            document.getElementById('reviewProductAddToCart').onclick = () => addToCart(productName, product.price);
+            
+            // Display reviews
+            displayReviews(product.reviews);
+            
+            // Show review page
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('reviewPage').style.display = 'block';
+            
+            // Reset review form
+            document.getElementById('reviewForm').style.display = 'none';
+            selectedRating = 0;
+            updateStarRating();
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewTitle').value = '';
+            document.getElementById('reviewText').value = '';
+        }
+
+        function displayReviews(reviews) {
+            const reviewsList = document.getElementById('reviewsList');
+            reviewsList.innerHTML = '';
+            
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<p>No reviews yet. Be the first to review this product!</p>';
+                return;
+            }
+            
+            reviews.forEach(review => {
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer-name">${review.name}</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <div class="review-rating">${stars}</div>
+                    <div class="review-title"><strong>${review.title}</strong></div>
+                    <div class="review-text">${review.text}</div>
+                `;
+                reviewsList.appendChild(reviewElement);
+            });
+        }
+
+        function toggleReviewForm() {
+            const form = document.getElementById('reviewForm');
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function setupStarRating() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    selectedRating = parseInt(star.getAttribute('data-rating'));
+                    updateStarRating();
+                });
+            });
+        }
+
+        function updateStarRating() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                if (rating <= selectedRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function submitReview() {
+            const name = document.getElementById('reviewerName').value.trim();
+            const title = document.getElementById('reviewTitle').value.trim();
+            const text = document.getElementById('reviewText').value.trim();
+            
+            if (!name || !title || !text || selectedRating === 0) {
+                alert('Please fill in all fields and select a rating.');
+                return;
+            }
+            
+            const newReview = {
+                name: name,
+                rating: selectedRating,
+                date: new Date().toISOString().split('T')[0],
+                title: title,
+                text: text
+            };
+            
+            products[currentProduct].reviews.unshift(newReview);
+            displayReviews(products[currentProduct].reviews);
+            
+            // Reset form
+            document.getElementById('reviewForm').style.display = 'none';
+            selectedRating = 0;
+            updateStarRating();
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewTitle').value = '';
+            document.getElementById('reviewText').value = '';
+            
+            showNotification('Thank you for your review!');
+        }
+
+        function addToCart(name, price) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            cartCount++;
+            updateCartUI();
+            showNotification(`${name} added to cart!`);
+        }
+
+        function updateCartUI() {
+            document.querySelector('.cart-count').textContent = cartCount;
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div><strong>${item.name}</strong></div>
+                            <div>$${item.price} x ${item.quantity}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartTotal.innerHTML = `<h3>Total: $${total}</h3>`;
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                cartCount += change;
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(index) {
+            cartCount -= cart[index].quantity;
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Thank you for your purchase! This is a demo site created by Niyi the Web Developer.');
+            cart = [];
+            cartCount = 0;
+            updateCartUI();
+            toggleCart();
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10c48a;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                z-index: 1000;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Close cart when clicking outside
+        document.addEventListener('click', (e) => {
+            const cartModal = document.getElementById('cartModal');
+            const cartIcon = document.querySelector('.cart-icon');
+            
+            if (!cartModal.contains(e.target) && !cartIcon.contains(e.target)) {
+                cartModal.style.display = 'none';
+            }
+        });
+
+        // Initialize star rating functionality
+        document.addEventListener('DOMContentLoaded', setupStarRating);
+    </script>
+</body>
+</html>

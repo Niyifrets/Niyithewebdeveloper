@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Consulting - Business Demo</title>
+    <style>
+        /* Your original CSS remains exactly the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            background: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(37, 99, 235, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2563eb;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .stats-bar {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .clients {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #f8f9fa;
+        }
+
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .client-logo {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: #333;
+        }
+
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #2563eb;
+            position: absolute;
+            left: 0;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .testimonials {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .contact {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #1e40af;
+        }
+
+        .team {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #f1f3f4;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .member-social {
+            margin-top: 1rem;
+        }
+
+        .member-social a {
+            color: #2563eb;
+            margin: 0 0.3rem;
+            text-decoration: none;
+        }
+
+        .faq {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Mobile Responsiveness - ADDED */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .cta-button {
+                margin: 0;
+                width: 200px;
+                text-align: center;
+            }
+
+            .stats-bar {
+                margin: -1rem 1rem 0;
+                padding: 1.5rem 1rem;
+            }
+
+            .stats-container {
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                flex: 1 1 40%;
+                min-width: 120px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .client-logos {
+                gap: 1rem;
+            }
+
+            .client-logo {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .services, .clients, .testimonials, .team, .faq, .contact {
+                padding: 2rem 1rem;
+            }
+
+            .service-card, .team-member {
+                padding: 1.5rem;
+            }
+
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .author-avatar {
+                margin-right: 0;
+            }
+
+            .contact-form {
+                margin: 1rem auto 0;
+                padding: 1.5rem;
+            }
+
+            .watermark {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .stat-item {
+                flex: 1 1 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your original HTML remains exactly the same -->
+    <div class="demo-banner">
+        🚀 DEMO SITE - Created by Niyi the Web Developer | No real services offered
+    </div>
+
+    <div class="watermark">Demo by Niyi the Web Developer</div>
+
+    <nav class="navbar">
+        <div class="logo">Nexus Consulting</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#team">Team</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Strategic Business Solutions</h1>
+        <p>Driving growth and innovation for forward-thinking organizations</p>
+        <div class="hero-cta">
+            <a href="#contact" class="cta-button">Get Consultation</a>
+            <a href="#services" class="cta-button" style="background: transparent; border: 2px solid white;">Our Services</a>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Avg. Growth</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="clients">
+        <h2>Trusted By Industry Leaders</h2>
+        <div class="client-logos">
+            <div class="client-logo">TechCorp</div>
+            <div class="client-logo">Global Solutions</div>
+            <div class="client-logo">Innovate Inc</div>
+            <div class="client-logo">Future Enterprises</div>
+            <div class="client-logo">Prime Systems</div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Business Strategy</h3>
+                <p>Comprehensive strategic planning and implementation for sustainable growth</p>
+                <ul class="service-features">
+                    <li>Market Analysis & Research</li>
+                    <li>Competitive Positioning</li>
+                    <li>Strategic Roadmapping</li>
+                    <li>Performance Metrics</li>
+                </ul>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Management Consulting</h3>
+                <p>Optimize operations and improve organizational efficiency</p>
+                <ul class="service-features">
+                    <li>Process Optimization</li>
+                    <li>Organizational Design</li>
+                    <li>Change Management</li>
+                    <li>Performance Improvement</li>
+                </ul>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Digital Transformation</h3>
+                <p>Modernize your business with cutting-edge technology solutions</p>
+                <ul class="service-features">
+                    <li>Technology Assessment</li>
+                    <li>Digital Strategy</li>
+                    <li>Implementation Support</li>
+                    <li>Training & Adoption</li>
+                </ul>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>Client Success Stories</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "Nexus Consulting transformed our digital strategy, resulting in 40% revenue growth within the first year. Their expertise was invaluable."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JD</div>
+                    <div>
+                        <div>John Davidson</div>
+                        <div>CEO, TechCorp Inc.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "The strategic insights provided by Nexus helped us enter new markets successfully. Their team is professional, knowledgeable, and results-driven."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SR</div>
+                    <div>
+                        <div>Sarah Roberts</div>
+                        <div>VP Strategy, Global Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">SJ</div>
+                <h3>Sarah Johnson</h3>
+                <p>CEO & Senior Partner</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">15+ years in business strategy</p>
+                <div class="member-social">
+                    <a href="#">in</a>
+                    <a href="#">✉</a>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">MC</div>
+                <h3>Michael Chen</h3>
+                <p>CTO & Technology Lead</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Expert in digital transformation</p>
+                <div class="member-social">
+                    <a href="#">in</a>
+                    <a href="#">✉</a>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-image">ER</div>
+                <h3>Emily Rodriguez</h3>
+                <p>Head of Strategy</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Specializing in growth strategies</p>
+                <div class="member-social">
+                    <a href="#">in</a>
+                    <a href="#">✉</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What industries do you specialize in?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    We work with clients across technology, healthcare, finance, manufacturing, and retail sectors, tailoring our approach to each industry's unique challenges.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long do typical consulting engagements last?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Projects typically range from 3-month strategic assessments to 12-month transformation initiatives, depending on scope and objectives.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you offer ongoing support after project completion?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, we offer various retainer models for ongoing strategic guidance and implementation support to ensure sustained success.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Service Interest</label>
+                <select id="service">
+                    <option value="">Select a service</option>
+                    <option value="strategy">Business Strategy</option>
+                    <option value="management">Management Consulting</option>
+                    <option value="digital">Digital Transformation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Nexus Consulting</h3>
+                <p>Strategic business solutions for modern organizations.</p>
+                <div class="social-links">
+                    <a href="#">in</a>
+                    <a href="#">f</a>
+                    <a href="#">t</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#">Business Strategy</a>
+                <a href="#">Management Consulting</a>
+                <a href="#">Digital Transformation</a>
+                <a href="#">Case Studies</a>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <a href="#">About Us</a>
+                <a href="#">Our Team</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="#">contact@nexusdemo.com</a>
+                <a href="#">+1 (555) 123-4567</a>
+                <a href="#">123 Business Ave, Suite 100</a>
+                <a href="#">New York, NY 10001</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Nexus Consulting Demo. All rights reserved.</p>
+            <p>This is a demonstration website created by Niyi the Web Developer.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon. (This is a demo site created by Niyi the Web Developer)');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question span').forEach(span => {
+                    span.textContent = '+';
+                });
+                
+                // Toggle current answer
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                    question.querySelector('span').textContent = '-';
+                }
+            });
+        });
+
+        // Initially hide FAQ answers
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
