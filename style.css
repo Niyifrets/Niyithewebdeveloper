@@ -445,7 +445,7 @@ body.dark .faq-question:hover {
 
 /* Active state for open FAQ items */
 .faq-item.active .faq-answer {
-    max-height: 400px;
+    max-height: 600px;
     padding-top: 0;
 }
 
@@ -848,4 +848,5 @@ body.dark .testimonial {
     .portfolio-content {
         padding: 15px;
     }
+
 }
