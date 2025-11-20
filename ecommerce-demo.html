@@ -218,25 +218,29 @@
             width: 100%;
             transition: background 0.3s ease;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .add-to-cart:hover {
             background: #0da876;
         }
 
-        .view-reviews-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
+        .view-details {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
             padding: 0.5rem 1rem;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .view-reviews-btn:hover {
-            background: #1d4ed8;
+        .view-details:hover {
+            background: #2563eb;
+            color: white;
         }
 
         .cart-modal {
@@ -301,188 +305,6 @@
             width: 100%;
             margin-top: 1rem;
             font-size: 1.1rem;
-        }
-
-        /* Review Page Styles */
-        .review-page {
-            display: none;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .back-to-products {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-to-products:hover {
-            background: #5a6268;
-        }
-
-        .product-detail {
-            display: flex;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .product-detail-image {
-            flex: 1;
-            max-width: 400px;
-        }
-
-        .product-detail-image img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .product-detail-info {
-            flex: 1;
-        }
-
-        .reviews-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .reviews-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .add-review-btn {
-            background: #10c48a;
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .add-review-btn:hover {
-            background: #0da876;
-        }
-
-        .review-form {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            display: none;
-        }
-
-        .review-form h3 {
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .star-rating {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .star {
-            font-size: 1.5rem;
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .star:hover,
-        .star.active {
-            color: #ffc107;
-        }
-
-        .submit-review-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .submit-review-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .reviews-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .review-item {
-            padding: 1.5rem;
-            border: 1px solid #eee;
-            border-radius: 8px;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .reviewer-name {
-            font-weight: bold;
-        }
-
-        .review-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .review-rating {
-            color: #ffc107;
-            margin-bottom: 0.5rem;
-        }
-
-        .review-text {
-            line-height: 1.5;
         }
 
         footer {
@@ -568,10 +390,10 @@
     <div class="watermark">Demo by Niyi the Web Developer</div>
 
     <nav class="navbar">
-        <div class="logo" onclick="showHomePage()">TechStore</div>
+        <div class="logo">TechStore</div>
         <div class="nav-links">
-            <a href="#" onclick="showHomePage()">Home</a>
-            <a href="#" onclick="showHomePage()">Products</a>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
         </div>
@@ -611,7 +433,7 @@
                     <div class="stock-status">In Stock</div>
                     <div class="product-price">$699</div>
                     <button class="add-to-cart" onclick="addToCart('Smartphone Pro', 699)">Add to Cart</button>
-                    <button class="view-reviews-btn" onclick="showReviews('Smartphone Pro')">View Reviews</button>
+                    <button class="view-details" onclick="viewProductDetails('smartphone-pro.html')">View Details</button>
                 </div>
                 <div class="product-card">
                     <div class="product-badge">New</div>
@@ -626,7 +448,7 @@
                     <div class="stock-status">Only 3 left</div>
                     <div class="product-price">$1299</div>
                     <button class="add-to-cart" onclick="addToCart('Laptop Elite', 1299)">Add to Cart</button>
-                    <button class="view-reviews-btn" onclick="showReviews('Laptop Elite')">View Reviews</button>
+                    <button class="view-details" onclick="viewProductDetails('laptop-elite.html')">View Details</button>
                 </div>
                 <div class="product-card">
                     <div class="product-image">
@@ -640,7 +462,7 @@
                     <div class="stock-status">In Stock</div>
                     <div class="product-price">$199</div>
                     <button class="add-to-cart" onclick="addToCart('Wireless Headphones', 199)">Add to Cart</button>
-                    <button class="view-reviews-btn" onclick="showReviews('Wireless Headphones')">View Reviews</button>
+                    <button class="view-details" onclick="viewProductDetails('wireless-headphones.html')">View Details</button>
                 </div>
                 <div class="product-card">
                     <div class="product-badge">Sale</div>
@@ -655,7 +477,7 @@
                     <div class="stock-status">In Stock</div>
                     <div class="product-price"><span style="text-decoration: line-through; color: #999; margin-right: 0.5rem;">$349</span> $299</div>
                     <button class="add-to-cart" onclick="addToCart('Smart Watch', 299)">Add to Cart</button>
-                    <button class="view-reviews-btn" onclick="showReviews('Smart Watch')">View Reviews</button>
+                    <button class="view-details" onclick="viewProductDetails('smart-watch.html')">View Details</button>
                 </div>
             </div>
         </section>
@@ -685,63 +507,6 @@
                 </div>
             </div>
         </section>
-    </div>
-
-    <!-- Review Page Content -->
-    <div id="reviewPage" class="review-page">
-        <button class="back-to-products" onclick="showHomePage()">← Back to Products</button>
-        
-        <div class="product-detail">
-            <div class="product-detail-image">
-                <img id="reviewProductImage" src="" alt="">
-            </div>
-            <div class="product-detail-info">
-                <h2 id="reviewProductName"></h2>
-                <p id="reviewProductDescription"></p>
-                <div class="product-rating" id="reviewProductRating"></div>
-                <div class="stock-status" id="reviewProductStock"></div>
-                <div class="product-price" id="reviewProductPrice"></div>
-                <button class="add-to-cart" id="reviewProductAddToCart">Add to Cart</button>
-            </div>
-        </div>
-
-        <div class="reviews-section">
-            <div class="reviews-header">
-                <h2>Customer Reviews</h2>
-                <button class="add-review-btn" onclick="toggleReviewForm()">Add Review</button>
-            </div>
-
-            <div class="review-form" id="reviewForm">
-                <h3>Write a Review</h3>
-                <div class="form-group">
-                    <label for="reviewerName">Your Name</label>
-                    <input type="text" id="reviewerName" placeholder="Enter your name">
-                </div>
-                <div class="form-group">
-                    <label>Rating</label>
-                    <div class="star-rating" id="starRating">
-                        <span class="star" data-rating="1">★</span>
-                        <span class="star" data-rating="2">★</span>
-                        <span class="star" data-rating="3">★</span>
-                        <span class="star" data-rating="4">★</span>
-                        <span class="star" data-rating="5">★</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="reviewTitle">Review Title</label>
-                    <input type="text" id="reviewTitle" placeholder="Summarize your experience">
-                </div>
-                <div class="form-group">
-                    <label for="reviewText">Your Review</label>
-                    <textarea id="reviewText" placeholder="Share your thoughts about this product"></textarea>
-                </div>
-                <button class="submit-review-btn" onclick="submitReview()">Submit Review</button>
-            </div>
-
-            <div class="reviews-list" id="reviewsList">
-                <!-- Reviews will be dynamically added here -->
-            </div>
-        </div>
     </div>
 
     <div class="cart-modal" id="cartModal">
@@ -790,177 +555,6 @@
     <script>
         let cart = [];
         let cartCount = 0;
-        let currentProduct = null;
-        let selectedRating = 0;
-
-        // Product data with reviews
-        const products = {
-            'Smartphone Pro': {
-                image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                description: 'Latest smartphone with advanced features including 5G connectivity, AI-powered camera, and all-day battery life.',
-                price: 699,
-                stock: 'In Stock',
-                rating: '★★★★☆ (128)',
-                reviews: [
-                    { name: 'Alex Johnson', rating: 4, date: '2023-10-15', title: 'Great phone with minor issues', text: 'The camera quality is amazing and battery lasts all day. However, the fingerprint sensor could be more responsive.' },
-                    { name: 'Sarah Miller', rating: 5, date: '2023-09-22', title: 'Best phone I\'ve ever owned', text: 'Upgraded from my old phone and the difference is night and day. Super fast and the display is gorgeous.' },
-                    { name: 'Mike Chen', rating: 4, date: '2023-08-30', title: 'Solid performance', text: 'Handles everything I throw at it without lag. The only downside is it gets a bit warm during heavy gaming.' }
-                ]
-            },
-            'Laptop Elite': {
-                image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                description: 'Powerful laptop for work and play with high-performance processor, dedicated graphics, and stunning display.',
-                price: 1299,
-                stock: 'Only 3 left',
-                rating: '★★★★★ (64)',
-                reviews: [
-                    { name: 'David Wilson', rating: 5, date: '2023-11-05', title: 'Perfect for work and gaming', text: 'This laptop handles my programming work and gaming sessions without any issues. The build quality is exceptional.' },
-                    { name: 'Emily Rodriguez', rating: 5, date: '2023-10-28', title: 'Worth every penny', text: 'As a graphic designer, I need powerful hardware and this delivers. The color accuracy on the display is perfect.' }
-                ]
-            },
-            'Wireless Headphones': {
-                image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                description: 'Premium sound quality with noise cancellation, comfortable fit, and long battery life for all-day listening.',
-                price: 199,
-                stock: 'In Stock',
-                rating: '★★★★☆ (89)',
-                reviews: [
-                    { name: 'James Thompson', rating: 4, date: '2023-10-10', title: 'Excellent sound quality', text: 'The noise cancellation works great on my commute. Battery life is impressive - I only charge once a week.' },
-                    { name: 'Lisa Park', rating: 5, date: '2023-09-18', title: 'Comfortable and great sound', text: 'I wear these for hours during work calls and they never get uncomfortable. Sound quality is crystal clear.' },
-                    { name: 'Robert Brown', rating: 3, date: '2023-08-12', title: 'Good but not perfect', text: 'Sound is good but the bass could be stronger. Comfortable for long periods though.' }
-                ]
-            },
-            'Smart Watch': {
-                image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                description: 'Track your fitness and notifications with advanced health monitoring, GPS, and seamless smartphone integration.',
-                price: 299,
-                stock: 'In Stock',
-                rating: '★★★★☆ (42)',
-                reviews: [
-                    { name: 'Amanda Lee', rating: 4, date: '2023-11-12', title: 'Great fitness tracker', text: 'The step counting and heart rate monitoring seem accurate. Battery lasts about 4 days with normal use.' },
-                    { name: 'Kevin Smith', rating: 5, date: '2023-10-25', title: 'Love the notifications feature', text: 'Being able to see messages and control music from my wrist is super convenient. Looks stylish too.' }
-                ]
-            }
-        };
-
-        function showHomePage() {
-            document.getElementById('homePage').style.display = 'block';
-            document.getElementById('reviewPage').style.display = 'none';
-        }
-
-        function showReviews(productName) {
-            currentProduct = productName;
-            const product = products[productName];
-            
-            // Update product details
-            document.getElementById('reviewProductImage').src = product.image;
-            document.getElementById('reviewProductName').textContent = productName;
-            document.getElementById('reviewProductDescription').textContent = product.description;
-            document.getElementById('reviewProductRating').innerHTML = product.rating;
-            document.getElementById('reviewProductStock').textContent = product.stock;
-            document.getElementById('reviewProductPrice').textContent = `$${product.price}`;
-            document.getElementById('reviewProductAddToCart').onclick = () => addToCart(productName, product.price);
-            
-            // Display reviews
-            displayReviews(product.reviews);
-            
-            // Show review page
-            document.getElementById('homePage').style.display = 'none';
-            document.getElementById('reviewPage').style.display = 'block';
-            
-            // Reset review form
-            document.getElementById('reviewForm').style.display = 'none';
-            selectedRating = 0;
-            updateStarRating();
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewTitle').value = '';
-            document.getElementById('reviewText').value = '';
-        }
-
-        function displayReviews(reviews) {
-            const reviewsList = document.getElementById('reviewsList');
-            reviewsList.innerHTML = '';
-            
-            if (reviews.length === 0) {
-                reviewsList.innerHTML = '<p>No reviews yet. Be the first to review this product!</p>';
-                return;
-            }
-            
-            reviews.forEach(review => {
-                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-                const reviewElement = document.createElement('div');
-                reviewElement.className = 'review-item';
-                reviewElement.innerHTML = `
-                    <div class="review-header">
-                        <div class="reviewer-name">${review.name}</div>
-                        <div class="review-date">${review.date}</div>
-                    </div>
-                    <div class="review-rating">${stars}</div>
-                    <div class="review-title"><strong>${review.title}</strong></div>
-                    <div class="review-text">${review.text}</div>
-                `;
-                reviewsList.appendChild(reviewElement);
-            });
-        }
-
-        function toggleReviewForm() {
-            const form = document.getElementById('reviewForm');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function setupStarRating() {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => {
-                star.addEventListener('click', () => {
-                    selectedRating = parseInt(star.getAttribute('data-rating'));
-                    updateStarRating();
-                });
-            });
-        }
-
-        function updateStarRating() {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => {
-                const rating = parseInt(star.getAttribute('data-rating'));
-                if (rating <= selectedRating) {
-                    star.classList.add('active');
-                } else {
-                    star.classList.remove('active');
-                }
-            });
-        }
-
-        function submitReview() {
-            const name = document.getElementById('reviewerName').value.trim();
-            const title = document.getElementById('reviewTitle').value.trim();
-            const text = document.getElementById('reviewText').value.trim();
-            
-            if (!name || !title || !text || selectedRating === 0) {
-                alert('Please fill in all fields and select a rating.');
-                return;
-            }
-            
-            const newReview = {
-                name: name,
-                rating: selectedRating,
-                date: new Date().toISOString().split('T')[0],
-                title: title,
-                text: text
-            };
-            
-            products[currentProduct].reviews.unshift(newReview);
-            displayReviews(products[currentProduct].reviews);
-            
-            // Reset form
-            document.getElementById('reviewForm').style.display = 'none';
-            selectedRating = 0;
-            updateStarRating();
-            document.getElementById('reviewerName').value = '';
-            document.getElementById('reviewTitle').value = '';
-            document.getElementById('reviewText').value = '';
-            
-            showNotification('Thank you for your review!');
-        }
 
         function addToCart(name, price) {
             // Check if item already exists in cart
@@ -1057,6 +651,11 @@
             }, 3000);
         }
 
+        // NEW FUNCTION: Navigate to product details page
+        function viewProductDetails(productPage) {
+            window.location.href = productPage;
+        }
+
         // Close cart when clicking outside
         document.addEventListener('click', (e) => {
             const cartModal = document.getElementById('cartModal');
@@ -1066,9 +665,6 @@
                 cartModal.style.display = 'none';
             }
         });
-
-        // Initialize star rating functionality
-        document.addEventListener('DOMContentLoaded', setupStarRating);
     </script>
 </body>
 </html>
