@@ -304,21 +304,28 @@ body.dark .portfolio-item {
     position: absolute;
     top: 0;
     left: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    filter: blur(3px) brightness(0.7);
+    transform: scale(1.1);
 }
 
 .portfolio-placeholder {
     position: relative;
     z-index: 1;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
 }
 
 .portfolio-item:hover .portfolio-screenshot {
-    opacity: 0.9;
+    filter: blur(1px) brightness(0.8);
+    transform: scale(1.05);
 }
 
 .portfolio-item:hover .portfolio-placeholder {
-    opacity: 0;
+    transform: scale(1.05);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
 }
 
 .portfolio-image::after {
@@ -824,6 +831,10 @@ body.dark .testimonial {
     .faq-question h3 {
         font-size: 1rem;
     }
+
+    .portfolio-placeholder {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -848,5 +859,9 @@ body.dark .testimonial {
     
     .portfolio-content {
         padding: 15px;
+    }
+
+    .portfolio-placeholder {
+        font-size: 1rem;
     }
 }
