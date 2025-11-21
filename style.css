@@ -615,6 +615,7 @@ footer::before {
     cursor: pointer;
     color: inherit;
     transition: transform 0.3s ease;
+    position: relative;
 }
 
 .nav-toggle:hover {
@@ -654,6 +655,19 @@ body.dark .nav-items {
 .nav-item:hover {
     background: rgba(16, 196, 138, 0.1);
     transform: translateX(5px);
+}
+
+/* Navigation Menu - Close Button */
+.close {
+    display: none;
+}
+
+.nav-toggle.active .hamburger {
+    display: none;
+}
+
+.nav-toggle.active .close {
+    display: inline;
 }
 
 /* Skill level indicators */
@@ -849,21 +863,4 @@ body.dark .testimonial {
     .portfolio-content {
         padding: 15px;
     }
-
-    /* Navigation Menu - Close Button */
-.nav-toggle {
-    position: relative;
-}
-
-.close {
-    display: none;
-}
-
-.nav-toggle.active .hamburger {
-    display: none;
-}
-
-.nav-toggle.active .close {
-    display: inline;
-}
 }
