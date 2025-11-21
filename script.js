@@ -165,11 +165,11 @@ function initContactForm() {
         emailjs.sendForm('service_wzpu8jt', 'template_zjo3t19', this)
             .then(function() {
                 // Success
-                submitBtn.textContent = 'Message Sent! 🎉';
+                submitBtn.textContent = 'Message Sent! ';
                 submitBtn.style.background = '#25D366';
                 
                 // Show success message
-                showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+                showFormMessage('Message sent successfully! we\'ll get back to you soon.', 'success');
                 
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
@@ -428,3 +428,4 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initContactForm();
 });
+
