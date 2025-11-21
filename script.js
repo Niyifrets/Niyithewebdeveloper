@@ -71,12 +71,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navToggle && navItems) {
         navToggle.addEventListener('click', function() {
             navItems.classList.toggle('show');
+            navToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.classList.remove('show');
+                navToggle.classList.remove('active');
+            });
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!navToggle.contains(e.target) && !navItems.contains(e.target)) {
                 navItems.classList.remove('show');
+                navToggle.classList.remove('active');
             }
         });
     }
